@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 
 $host = "sql209.infinityfree.com";
 $username = "if0_35299397";
-$password = "Brimesh@07";
+$password = "lqh2lwzoj4Idaaa";
 $database = "if0_35299397_feedback";
 
 // Create a connection to the MySQL database

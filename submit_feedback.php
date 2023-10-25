@@ -2,7 +2,7 @@
 // Database connection details
 $host = "sql209.infinityfree.com";
 $username = "if0_35299397";
-$password = "Brimesh@123";
+$password = "lqh2lwzoj4Idaaa";
 $database = "if0_35299397_feedback"; // Replace with your database name
 
 // Create a connection to the MySQL database
