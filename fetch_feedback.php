@@ -5,10 +5,10 @@ error_reporting(E_ALL);
 
 
 
-$host = "localhost";
-$username = "id21447361_root";
+$host = "sql209.infinityfree.com";
+$username = "if0_35299397";
 $password = "Brimesh@07";
-$database = "id21447361_feedback";
+$database = "if0_35299397_feedback";
 
 // Create a connection to the MySQL database
 $conn = new mysqli($host, $username, $password, $database);
