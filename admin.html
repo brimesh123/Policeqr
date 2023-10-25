@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang2<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Admin Panel - Gujarat Police Feedback System</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+  <style>
+    /* Reset default margin and padding */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #e6e9ed;
+      transition: background-color 0.5s;
+    }
+
+    header {
+      background-color: #003366;
+      color: #ffffff;
+      text-align: center;
+      padding: 1rem 0;
+      border-bottom: 5px solid #8B0000;
+      /* Dark Red */
+      box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+      width: 100%;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: #001f3f;
+      height:;
+      padding: 1rem 0;
+      border-right: 5px solid #003366;
+      transition: all 0.3s;
+    }
+
+    .sidebar:hover {
+      width: 260px;
+    }
+
+    .sidebar ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .sidebar li {
+      margin-bottom: 1rem;
+      padding: 0.5rem 1rem;
+      border: 2px solid #003366;
+      border-radius: 5px;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .sidebar a {
+      color: #ffffff;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .sidebar li:hover {
+      background-color: #003366;
+      transform: scale(1.05);
+    }
+
+    main {
+      flex: 1;
+      padding: 1rem;
+      background-color: #e6e9ed;
+      transition: all 0.3s;
+    }
+
+    .filter-section,
+    .feedback-section {
+      margin-bottom: 2rem;
+      padding: 1rem;
+      background-color: #ffffff;
+      border: 2px solid #003366;
+      border-radius: 5px;
+      box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .filter-section:hover,
+    .feedback-section:hover {
+      transform: scale(1.02);
+      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      transition: color 0.3s;
+    }
+
+    select,
+    button {
+      width: 100%;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      border: 2px solid #003366;
+      border-radius: 4px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    button {
+      background-color: #003366;
+      color: #ffffff;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #001f3f;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      transition: all 0.3s;
+    }
+
+    th,
+    td {
+      padding: 0.5rem;
+      text-align: left;
+      border: 2px solid #003366;
+    }
+
+    th {
+      background-color: #003366;
+      color: #ffffff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem 0;
+      background-color: #003366;
+      color: #ffffff;
+      border-top: 5px solid #8B0000;
+      /* Dark Red */
+      box-shadow: 0px -3px 10px rgba(0, 0, 0, 0.2);
+      width: 100%;
+    }
+
+    /* Media queries for responsiveness */
+    @media screen and (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        height: auto;
+        border-right: none;
+      }
+
+      .sidebar:hover {
+        width: 100%;
+      }
+
+      /* Adjust font sizes for smaller screens */
+      body {
+        font-size: 16px;
+      }
+
+      /* Style adjustments for header and footer in mobile view */
+      header {
+        padding: 0.5rem 0;
+      }
+
+      footer {
+        padding: 0.5rem 0;
+      }
+
+      /* Responsive styles for the filter section */
+      .filter-section {
+        padding: 0.5rem;
+      }
+
+
+
+      .form-group {
+        margin-bottom: 0.5rem;
+      }
+
+      label {
+        margin-bottom: 0.25rem;
+      }
+
+      select,
+      button {
+        margin-bottom: 0.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+      
+        <img src="https://policeqr.000webhostapp.com/download%20(7).png" alt="Logo" style="max-width: 200px; margin-bottom: 20px;">
+    
+    <h1>Admin Panel - Gujarat Police Feedback System</h1>
+  </header>
+  <div class="container">
+    <aside class="sidebar">
+      <ul>
+        <li><a href="#">Dashboard</a></li>
+      </ul>
+    </aside>
+    <main>
+     
+      <section class="filter-section">
+        <center>
+            <h2>Feedback Filters</h2>
+        </center>
+        <form id="filterForm">
+            <script>
+            
+            
+            
+          document.getElementById('filterForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+        
+            // Get filter criteria
+            const city = document.getElementById('city').value;
+            const station = document.getElementById('station').value;
+            const year = document.getElementById('year').value;
+            const month = document.getElementById('month').value;
+        
+            // Fetch filtered data from the server
+            fetch(`fetch_feedback.php?city=${city}&station=${station}&year=${year}&month=${month}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Clear existing rows from the table
+                    const feedbackTableBody = document.getElementById('feedbackTableBody');
+                    feedbackTableBody.innerHTML = '';
+        
+                    // Populate the feedback table with the filtered data
+                    data.forEach(feedback => {
+                        const row = document.createElement('tr');
+                        const cityCell = document.createElement('td');
+                        const stationCell = document.createElement('td');
+                        const yearCell = document.createElement('td');
+                        const monthCell = document.createElement('td');
+                        const feedbackCell = document.createElement('td');
+        
+                        cityCell.textContent = feedback.city;
+                        stationCell.textContent = feedback.station;
+                        yearCell.textContent = feedback.year;
+                        monthCell.textContent = feedback.month;
+                        feedbackCell.textContent = feedback.feedback;
+        
+                        row.appendChild(cityCell);
+                        row.appendChild(stationCell);
+                        row.appendChild(yearCell);
+                        row.appendChild(monthCell);
+                        row.appendChild(feedbackCell);
+        
+                        feedbackTableBody.appendChild(row);
+                    });
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        });
+                
+                
+       
+    
+      </script>
+            <div class="form-group">
+                <label for="city">City:</label>
+                <select id="city">
+                    <option value="">Select City</option>
+                    <option value="Ahmedabad">Ahmedabad</option>
+<option value="Surat">Surat</option>
+<option value="Vadodara">Vadodara</option>
+<option value="Rajkot">Rajkot</option>
+<option value="Bhavnagar">Bhavnagar</option>
+<option value="Jamnagar">Jamnagar</option>
+<option value="Anand">Anand</option>
+<option value="Kutch">Kutch</option>
+<option value="Junagadh">Junagadh</option>
+<option value="Bharuch">Bharuch</option>
+<option value="Banaskantha">Banaskantha</option>
+<option value="Bhuj">Bhuj</option>
+<option value="Amreli">Amreli</option>
+<option value="Gandhinagar">Gandhinagar</option>
+<option value="Navsari">Navsari</option>
+<option value="Surendranagar">Surendranagar</option>
+<option value="Morbi">Morbi</option>
+<option value="Valsad">Valsad</option>
+<option value="Patan">Patan</option>
+<option value="Narmada">Narmada</option>
+<option value="Porbandar">Porbandar</option>
+<option value="Dahod">Dahod</option>
+<option value="Tapi">Tapi</option>
+<option value="Devbhoomi Dwarka">Devbhoomi Dwarka</option>
+<option value="Dang">Dang</option>
+<option value="Chhota Udaipur">Chhota Udaipur</option>
+<option value="Mahisagar">Mahisagar</option>
+<option value="Aravalli">Aravalli</option>
+<option value="Gir Somnath">Gir Somnath</option>
+<option value="Botad">Botad</option>
+<option value="Panchmahal">Panchmahal</option>
+<option value="Kheda">Kheda</option>
+<option value="Sabarkantha">Sabarkantha</option>
+<option value="Mehsana">Mehsana</option>
+<option value="Godhra">Godhra</option>
+<option value="Himatnagar">Himatnagar</option>
+<option value="Palanpur">Palanpur</option>
+<option value="Dwarka">Dwarka</option>
+<option value="Veraval">Veraval</option>
+<option value="Gondal">Gondal</option>
+<option value="Palitana">Palitana</option>
+<option value="Mandvi">Mandvi</option>
+<option value="Ankleshwar">Ankleshwar</option>
+<option value="Bardoli">Bardoli</option>
+<option value="Lunavada">Lunavada</option>
+<option value="Borsad">Borsad</option>
+<option value="Petlad">Petlad</option>
+<option value="Dabhoi">Dabhoi</option>
+<option value="Kalol">Kalol</option>
+<option value="Dholka">Dholka</option>
+<option value="Umbergaon">Umbergaon</option>
+<option value="Bopal">Bopal</option>
+<option value="Gadhada">Gadhada</option>
+<option value="Sanand">Sanand</option>
+<option value="Sidhpur">Sidhpur</option>
+<option value="Visnagar">Visnagar</option>
+<option value="Dharampur">Dharampur</option>
+<option value="Khambhat">Khambhat</option>
+<option value="Modasa">Modasa</option>
+<option value="Radhanpur">Radhanpur</option>
+<option value="Unjha">Unjha</option>
+<option value="Vyara">Vyara</option>
+
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="station">Police Station:</label>
+                <select id="station">
+                    <option value="">Select Station</option>
+                    <option value="Katargam">Katargam</option>
+                    <option value="Sarthana">Sarthana</option>
+                    
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="year">Year:</label>
+                <select id="year">
+                    <option value="">Select Year</option>
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="month">Month:</label>
+                <select id="month">
+                    <option value="">Select Month</option>
+                    <option value="1">Jan</option>
+                    <option value="2">Feb</option>
+                </select>
+            </div>
+            <button type="submit">Filter</button>
+            <button type="button" id="resetFilter">Reset Filters</button>
+
+        </form>
+    
+        <script>
+            document.getElementById('filterForm').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent the default form submission
+                
+                // Get filter criteria
+                const city = document.getElementById('city').value;
+                const station = document.getElementById('station').value;
+                const year = document.getElementById('year').value;
+                const month = document.getElementById('month').value;
+    
+                // Fetch filtered data from the server
+                fetch(`fetch_feedback.php?city=${city}&station=${station}&year=${year}&month=${month}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        // Handle the filtered data here
+                        console.log(data);
+                    })
+                    .catch(error => console.error('Error fetching data:', error));
+            });
+        </script>
+    </section>
+    
+
+
+
+
+
+
+      <section class="feedback-section">
+        <center>
+          <h2>Feedback Overview</h2>
+        </center>
+        <table>
+          <thead>
+            <tr>
+              <th>City</th>
+              <th>Police Station</th>
+              <th>Year</th>
+              <th>Month</th>
+              <th>Feedback</th>
+            </tr>
+          </thead>
+          <tbody id="feedbackTableBody">
+            <!-- Feedback data will be inserted here by JavaScript -->
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+  <footer>
+    <p>&copy; 2023 Gujarat Police. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Function to fetch feedback data from PHP script
+    function fetchFeedbackData() {
+      fetch('fetch_feedback.php') // Replace with the correct URL of your PHP script
+        .then(response => response.json())
+        .then(data => {
+          const feedbackTableBody = document.getElementById('feedbackTableBody');
+          feedbackTableBody.innerHTML = ''; // Clear existing data in the table body
+
+          data.forEach(feedback => {
+            const row = document.createElement('tr');
+            const cityCell = document.createElement('td');
+            const stationCell = document.createElement('td');
+            const yearCell = document.createElement('td');
+            const monthCell = document.createElement('td');
+            const feedbackCell = document.createElement('td');
+
+            cityCell.textContent = feedback.city;
+            stationCell.textContent = feedback.station;
+            yearCell.textContent = feedback.year;
+            monthCell.textContent = feedback.month;
+            feedbackCell.textContent = feedback.feedback;
+
+            row.appendChild(cityCell);
+            row.appendChild(stationCell);
+            row.appendChild(yearCell);
+            row.appendChild(monthCell);
+            row.appendChild(feedbackCell);
+
+            feedbackTableBody.appendChild(row);
+          });
+        })
+        .catch(error => console.error('Error fetching feedback data:', error));
+    }
+
+    // Call the fetchFeedbackData function when the page loads
+    window.onload = fetchFeedbackData;
+    
+     // Function to fetch feedback data from PHP script
+    function fetchFeedbackData() {
+      fetch('fetch_feedback.php')
+        .then(response => response.json())
+        .then(data => {
+          const feedbackTableBody = document.getElementById('feedbackTableBody');
+          feedbackTableBody.innerHTML = ''; // Clear existing data in the table body
+
+          if (data.length === 0) {
+              // If no feedback data is returned, display a message
+              const row = document.createElement('tr');
+              const cell = document.createElement('td');
+              cell.textContent = "No feedback found!";
+              cell.setAttribute('colspan', '5'); // Assuming there are 5 columns in your table
+              row.appendChild(cell);
+              feedbackTableBody.appendChild(row);
+          } else {
+              // Populate the feedback table with the feedback data
+              data.forEach(feedback => {
+                  const row = document.createElement('tr');
+                  const cityCell = document.createElement('td');
+                  const stationCell = document.createElement('td');
+                  const yearCell = document.createElement('td');
+                  const monthCell = document.createElement('td');
+                  const feedbackCell = document.createElement('td');
+
+                  cityCell.textContent = feedback.city;
+                  stationCell.textContent = feedback.station;
+                  yearCell.textContent = feedback.year;
+                  monthCell.textContent = feedback.month;
+                  feedbackCell.textContent = feedback.feedback;
+
+                  row.appendChild(cityCell);
+                  row.appendChild(stationCell);
+                  row.appendChild(yearCell);
+                  row.appendChild(monthCell);
+                  row.appendChild(feedbackCell);
+
+                  feedbackTableBody.appendChild(row);
+              });
+          }
+        })
+        .catch(error => console.error('Error fetching feedback data:', error));
+    }
+
+    // Event listener for Reset Filters button
+    document.getElementById('resetFilter').addEventListener('click', function() {
+        // Reset filter form fields
+        document.getElementById('city').value = "";
+        document.getElementById('station').value = "";
+        document.getElementById('year').value = "";
+        document.getElementById('month').value = "";
+
+        // Fetch all feedback data again
+        fetchFeedbackData();
+    });
+
+    // Call the fetchFeedbackData function when the page loads
+    window.onload = fetchFeedbackData;
+    
+  </script>
+  
+ 
+</body>
+
+</html>

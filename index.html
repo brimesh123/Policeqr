@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submit Feedback</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e6e9ed;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .feedback-section {
+      background-color: #002855;
+      color: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      width: 400px;
+      box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.4);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 15px;
+      font-size: 24px;
+    }
+    
+     .logo-container {
+         padding-top:10px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .logo-container img {
+      max-width: 80%;  /* Adjust based on the logo size */
+      margin-bottom: 15px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-size: 18px;
+      margin-bottom: 5px;
+      color: #00a6eb;
+    }
+
+    select,
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #e6e9ed;
+    }
+
+    textarea {
+      resize: vertical;
+      height: 100px;
+      width: 94%;
+    }
+
+    button[type="submit"] {
+      background-color: #00a6eb;
+      color: #ffffff;
+      border: none;
+      padding: 12px 20px;
+      font-size: 18px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      width: 100%;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #0079a3;
+    }
+    
+    /* Animation for the feedback section */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .feedback-section {
+            animation: fadeIn 1s forwards;
+            opacity: 0;  /* Initial opacity set to 0 */
+        }
+
+        /* Hover effects for input and select fields */
+        select,
+        input[type="text"],
+        textarea {
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        select:hover,
+        input[type="text"]:hover,
+        textarea:hover {
+            border-color: #00a6eb;
+            box-shadow: 0px 0px 5px rgba(0, 166, 235, 0.5);
+        }
+
+        /* Scale effect for the submit button */
+        button[type="submit"]:hover {
+            transform: scale(1.05);
+        }
+    
+    
+  </style>
+</head>
+<body>
+
+ <section class="feedback-section">
+     
+      
+    <center>
+      <h2>Submit Feedback</h2>
+      <div class="logo-container">
+      <img src="https://policeqr.000webhostapp.com/download%20(7).png" alt="Logo">
+    </div>
+    </center>
+    
+    
+ 
+    <form id="feedbackForm" method="post" action="submit_feedback.php">
+      <div class="form-group">
+        <label for="city">City:</label>
+        <select id="city" name="city" required>
+            <option value="">Select City</option>
+           <option value="Ahmedabad">Ahmedabad</option>
+<option value="Surat">Surat</option>
+<option value="Vadodara">Vadodara</option>
+<option value="Rajkot">Rajkot</option>
+<option value="Bhavnagar">Bhavnagar</option>
+<option value="Jamnagar">Jamnagar</option>
+<option value="Anand">Anand</option>
+<option value="Kutch">Kutch</option>
+<option value="Junagadh">Junagadh</option>
+<option value="Bharuch">Bharuch</option>
+<option value="Banaskantha">Banaskantha</option>
+<option value="Bhuj">Bhuj</option>
+<option value="Amreli">Amreli</option>
+<option value="Gandhinagar">Gandhinagar</option>
+<option value="Navsari">Navsari</option>
+<option value="Surendranagar">Surendranagar</option>
+<option value="Morbi">Morbi</option>
+<option value="Valsad">Valsad</option>
+<option value="Patan">Patan</option>
+<option value="Narmada">Narmada</option>
+<option value="Porbandar">Porbandar</option>
+<option value="Dahod">Dahod</option>
+<option value="Tapi">Tapi</option>
+<option value="Devbhoomi Dwarka">Devbhoomi Dwarka</option>
+<option value="Dang">Dang</option>
+<option value="Chhota Udaipur">Chhota Udaipur</option>
+<option value="Mahisagar">Mahisagar</option>
+<option value="Aravalli">Aravalli</option>
+<option value="Gir Somnath">Gir Somnath</option>
+<option value="Botad">Botad</option>
+<option value="Panchmahal">Panchmahal</option>
+<option value="Kheda">Kheda</option>
+<option value="Sabarkantha">Sabarkantha</option>
+<option value="Mehsana">Mehsana</option>
+<option value="Godhra">Godhra</option>
+<option value="Himatnagar">Himatnagar</option>
+<option value="Palanpur">Palanpur</option>
+<option value="Dwarka">Dwarka</option>
+<option value="Veraval">Veraval</option>
+<option value="Gondal">Gondal</option>
+<option value="Palitana">Palitana</option>
+<option value="Mandvi">Mandvi</option>
+<option value="Ankleshwar">Ankleshwar</option>
+<option value="Bardoli">Bardoli</option>
+<option value="Lunavada">Lunavada</option>
+<option value="Borsad">Borsad</option>
+<option value="Petlad">Petlad</option>
+<option value="Dabhoi">Dabhoi</option>
+<option value="Kalol">Kalol</option>
+<option value="Dholka">Dholka</option>
+<option value="Umbergaon">Umbergaon</option>
+<option value="Bopal">Bopal</option>
+<option value="Gadhada">Gadhada</option>
+<option value="Sanand">Sanand</option>
+<option value="Sidhpur">Sidhpur</option>
+<option value="Visnagar">Visnagar</option>
+<option value="Dharampur">Dharampur</option>
+<option value="Khambhat">Khambhat</option>
+<option value="Modasa">Modasa</option>
+<option value="Radhanpur">Radhanpur</option>
+<option value="Unjha">Unjha</option>
+<option value="Vyara">Vyara</option>
+
+            
+           
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="station">Police Station:</label>
+        <select id="station" name="station" required>
+            <option value="">Select Police Station</option>
+            <option value="Sarthana">Sarthana</option>
+            <option value="Katargam">Katargam</option>
+            <option value="Nana Bazar">Nana Bazar</option>
+            <option value="Bakrol">Bakrol</option>
+            <option value="Anand">Anand</option>
+          
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="year">Year:</label>
+        <select id="year" name="year" required>
+            <option value="">Select Year</option>
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="month">Month:</label>
+        <select id="month" name="month" required>
+            <option value="">Select Month</option>
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+            <option value="5">May</option>
+            <option value="6">June</option>
+            <option value="7">July</option>
+            <option value="8">August</option>
+            <option value="9">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="feedback">Feedback:</label>
+        <textarea id="feedback" name="feedback" required></textarea>
+      </div>
+      <div class="form-group">
+        <button type="submit">Submit Feedback</button>
+      </div>
+    </form>
+  </section>
+  <script>
+  
+ </script>
+</body>
+</html>
