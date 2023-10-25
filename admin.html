@@ -403,7 +403,7 @@
                 const month = document.getElementById('month').value;
     
                 // Fetch filtered data from the server
-                fetch(`fetch_feedback.php?city=${city}&station=${station}&year=${year}&month=${month}`)
+            fetch(`https://policeqr.000webhostapp.com/fetch_feedbac.php?city=${city}&station=${station}&year=${year}&month=${month}`)
                     .then(response => response.json())
                     .then(data => {
                         // Handle the filtered data here
